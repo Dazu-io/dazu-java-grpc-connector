@@ -27,8 +27,21 @@
 			<artifactId>grpc-stub</artifactId>
 			<version>${grpc.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java-util</artifactId>
+			<version>${protoc.version}</version>
+		  </dependency>
     </dependencies>
     <build>
+        <resources>
+            <resource>
+              <directory>target/generated-sources/protobuf/java</directory>
+              <includes>
+                <include>**/*.java</include>
+              </includes>
+            </resource>
+          </resources>
 		<extensions>
 			<extension>
 				<groupId>kr.motd.maven</groupId>

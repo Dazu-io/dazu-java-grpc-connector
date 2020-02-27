@@ -2,21 +2,18 @@ syntax = "proto3";
 
 option java_package = "io.dazu";
 
+import "google/protobuf/struct.proto";
+
 service ComponentService {
-    rpc Process (Message) returns (Message) {}
+    rpc Process (DazuMessage) returns (DazuMessage) {}
 }
 
-message Message{
-    string input = 1;
-    string output = 2;
+message DazuMessage{
+    google.protobuf.Struct input = 1;
+    google.protobuf.Struct context = 2;
+    google.protobuf.Struct data = 3;
+    google.protobuf.Struct output = 4;
 }
-
-// message Message{
-//     map<string,google.protobuf.Any> input = 1;
-//     map<string,google.protobuf.Any> context = 2;
-//     map<string,google.protobuf.Any> data = 3;
-//     map<string,google.protobuf.Any> output = 4;
-// }
 
 // self.input = {"text": text}
 // self.context = context
